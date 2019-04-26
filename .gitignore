@@ -2,3 +2,4 @@
 node_modules
 .svn
 yarn-error.log
+build
