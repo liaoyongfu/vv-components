@@ -1,0 +1,9 @@
+# 编译器行为配置文件
+
+root = true
+
+# js、css、scss文件统一配置：charset为utf-8，使用4个空格缩进代码
+[*.{js,css,scss}]
+charset = utf-8
+indent_style = space
+indent_size = 4
