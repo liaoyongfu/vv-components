@@ -1,10 +1,29 @@
+const tsImportPluginFactory = require('ts-import-plugin');
+
 module.exports = {
     entry: './src/index.tsx',
     module: {
         rules: [
             {
                 test: /\.tsx?$/,
-                use: 'awesome-typescript-loader'
+                use: [
+                    {
+                        loader: 'awesome-typescript-loader',
+                        options: {
+                            useCache: true,
+                            useBabel: false, // !important!
+                            getCustomTransformers: () => ({
+                                before: [
+                                    tsImportPluginFactory({
+                                        libraryName: 'antd',
+                                        libraryDirectory: 'lib',
+                                        style: false
+                                    })
+                                ]
+                            })
+                        }
+                    }
+                ]
             },
             {
                 test: /\.js$/,
@@ -12,11 +31,27 @@ module.exports = {
                 loader: 'source-map-loader',
                 exclude: /node_modules/
             },
-            {
-                test: /\.jsx?$/,
-                loader: 'babel-loader',
-                exclude: /node_modules/
-            },
+            // {
+            //     test: /\.jsx?$/,
+            //     exclude: /node_modules/,
+            //     use: [
+            //         {
+            //             loader: 'babel-loader',
+            //             options: {
+            //                 plugins: [
+            //                     [
+            //                         'import',
+            //                         {
+            //                             libraryName: 'antd',
+            //                             libraryDirectory: 'es',
+            //                             style: 'css' // `style: true` 会加载 less 文件
+            //                         }
+            //                     ]
+            //                 ]
+            //             }
+            //         }
+            //     ]
+            // },
             {
                 test: /\.css$/,
                 use: ['style-loader', 'css-loader']
@@ -27,6 +62,23 @@ module.exports = {
                     'style-loader',
                     'css-loader?modules&importLoaders=1&localIdentName=[name]_[local]_[hash:base64:5]',
                     'sass-loader'
+                ]
+            },
+            {
+                test: /\.less$/,
+                use: [
+                    {
+                        loader: 'style-loader'
+                    },
+                    {
+                        loader: 'css-loader'
+                    },
+                    {
+                        loader: 'less-loader',
+                        options: {
+                            javascriptEnabled: true
+                        }
+                    }
                 ]
             },
             {

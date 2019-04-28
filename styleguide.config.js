@@ -1,16 +1,15 @@
 const path = require('path');
 const glob = require('glob');
 const docgen = require('react-docgen-typescript');
-const webpackConfig = require('./config/dev');
+const webpackConfig = require('./config/base');
 
 module.exports = {
     title: 'React Components',
-    require: ['antd', 'antd/dist/antd.min.css'],
+    require: ['antd/dist/antd.min.css'],
     webpackConfig,
     propsParser: docgen.withDefaultConfig({
         propFilter: { skipPropsWithoutDoc: true }
     }).parse,
-    contextDependencies: [path.resolve(__dirname, 'lib/components')],
     components() {
         return glob
             .sync(path.resolve(__dirname, 'src/components/**/*.tsx'))
@@ -23,6 +22,7 @@ module.exports = {
                 );
             });
     },
+    styleguideDir: path.resolve(__dirname, 'docs'),
     usageMode: 'expand',
     theme: {
         maxWidth: 'inherit'
