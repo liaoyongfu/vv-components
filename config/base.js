@@ -1,10 +1,10 @@
 module.exports = {
-    entry: './src/app.js',
+    entry: './src/index.tsx',
     module: {
         rules: [
             {
                 test: /\.tsx?$/,
-                use: 'awesome-typescript-loader',
+                use: 'awesome-typescript-loader'
             },
             {
                 test: /\.js$/,

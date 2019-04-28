@@ -1,5 +1,3 @@
-import TablePagination from "./components/TablePagination";
+import TablePagination from './components/TablePagination';
 
-export {
-    TablePagination
-};
+export { TablePagination };

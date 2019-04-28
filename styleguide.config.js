@@ -5,20 +5,22 @@ const webpackConfig = require('./config/dev');
 
 module.exports = {
     title: 'React Components',
-    require: [
-        'antd',
-        'antd/dist/antd.min.css'
-    ],
+    require: ['antd', 'antd/dist/antd.min.css'],
     webpackConfig,
-    propsParser: docgen.withDefaultConfig({ propFilter: { skipPropsWithoutDoc: true } }).parse,
+    propsParser: docgen.withDefaultConfig({
+        propFilter: { skipPropsWithoutDoc: true }
+    }).parse,
     contextDependencies: [path.resolve(__dirname, 'lib/components')],
-    components: function () {
-        return glob.sync(path.resolve(__dirname, 'src/components/**/*.tsx'))
-            .filter(function (module) {
+    components() {
+        return glob
+            .sync(path.resolve(__dirname, 'src/components/**/*.tsx'))
+            .filter(function(module) {
                 const paths = path.parse(module);
 
-                return path.basename(path.dirname(module)) === paths.name &&
-                    /\/[A-Z]\w*\.tsx$/.test(module);
+                return (
+                    path.basename(path.dirname(module)) === paths.name &&
+                    /\/[A-Z]\w*\.tsx$/.test(module)
+                );
             });
     },
     usageMode: 'expand',
@@ -31,7 +33,7 @@ module.exports = {
             footer: {
                 display: 'none'
             }
-        },
+        }
     },
-    assetsDir: path.resolve(__dirname, 'example'),
+    assetsDir: path.resolve(__dirname, 'example')
 };

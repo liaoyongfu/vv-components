@@ -1,5 +1,5 @@
 import * as React from 'react';
-import PageSize from "./PageSize";
+import PageSize from './PageSize';
 
 export interface Props {
     /**
@@ -19,16 +19,13 @@ export interface Props {
     onChange?: (value: number) => void;
 }
 
-const TablePagination = ({total = 0, pageSize = 10, onChange}: Props) => {
+const TablePagination = ({ total = 0, pageSize = 10, onChange }: Props) => {
     return (
         <React.Fragment>
             {total} items
-            <PageSize
-                value={pageSize}
-                onChange={onChange}
-            />
+            <PageSize value={pageSize} onChange={onChange} />
         </React.Fragment>
-    )
+    );
 };
 
 export default TablePagination;
