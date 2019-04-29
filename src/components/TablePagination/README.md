@@ -10,6 +10,7 @@
 import React, { useState, useEffect } from 'react';
 import { Table } from 'antd';
 import reqwest from 'reqwest';
+import { TablePagination } from 'vv-components';
 
 const columns = [{
   title: 'Name',
