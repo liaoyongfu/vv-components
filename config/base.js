@@ -31,27 +31,6 @@ module.exports = {
                 loader: 'source-map-loader',
                 exclude: /node_modules/
             },
-            // {
-            //     test: /\.jsx?$/,
-            //     exclude: /node_modules/,
-            //     use: [
-            //         {
-            //             loader: 'babel-loader',
-            //             options: {
-            //                 plugins: [
-            //                     [
-            //                         'import',
-            //                         {
-            //                             libraryName: 'antd',
-            //                             libraryDirectory: 'es',
-            //                             style: 'css' // `style: true` 会加载 less 文件
-            //                         }
-            //                     ]
-            //                 ]
-            //             }
-            //         }
-            //     ]
-            // },
             {
                 test: /\.css$/,
                 use: ['style-loader', 'css-loader']
@@ -83,11 +62,25 @@ module.exports = {
             },
             {
                 test: /\.(png|svg|jpg|gif)$/,
-                use: ['file-loader']
+                use: [
+                    {
+                        loader: 'file-loader',
+                        options: {
+                            outputPath: 'images'
+                        }
+                    }
+                ]
             },
             {
                 test: /\.(woff|woff2|eot|ttf|otf)$/,
-                use: ['file-loader']
+                use: [
+                    {
+                        loader: 'file-loader',
+                        options: {
+                            outputPath: 'font'
+                        }
+                    }
+                ]
             }
         ]
     },

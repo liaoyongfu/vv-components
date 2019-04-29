@@ -1,7 +1,7 @@
 const path = require('path');
 const glob = require('glob');
 const docgen = require('react-docgen-typescript');
-const webpackConfig = require('./config/base');
+const webpackConfig = require('./config/build-doc');
 
 module.exports = {
     title: 'VV Components',
