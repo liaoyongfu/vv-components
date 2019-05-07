@@ -4,12 +4,10 @@ import PageSize from './PageSize';
 export interface Props {
     /**
      * 总数
-     * @default 0
      */
     total?: number;
     /**
      * 每页条数
-     * @default 10
      */
     pageSize?: number;
     /**
@@ -19,13 +17,18 @@ export interface Props {
     onChange?: (value: number) => void;
 }
 
-const TablePagination = ({ total = 0, pageSize = 10, onChange }: Props) => {
+const TablePagination = ({ total, onChange, pageSize }: Props) => {
     return (
         <React.Fragment>
             {total} items
             <PageSize value={pageSize} onChange={onChange} />
         </React.Fragment>
     );
+};
+
+TablePagination.defaultProps = {
+    total: 0,
+    pageSize: 10
 };
 
 export default TablePagination;

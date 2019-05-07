@@ -1,9 +1,9 @@
 {
   "compilerOptions": {
     "outDir": "lib",
-    "module": "esnext",
+    "module": "commonjs",
     "target": "es5",
-    "jsx": "react",
+    "jsx": "react",,
     "moduleResolution": "node"
   },
   "include": ["src/**/*"],
