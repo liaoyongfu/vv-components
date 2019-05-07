@@ -42,3 +42,14 @@ const Demo = props => {
 - 在 md 文件中无法用 Typescript？无法用类属性语法？
 - 如何生成多个版本的文档？
 - md 文件里的代码如何格式化？
+- windows 下不识别 /dev/tty
+
+## 备份
+
+````
+"husky": {
+    "hooks": {
+      "prepare-commit-msg": "exec < /dev/tty && git cz --hook"
+    }
+  }
+````
