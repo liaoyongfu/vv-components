@@ -43,9 +43,7 @@ const Demo = props => {
 - 如何生成多个版本的文档？
 - md 文件里的代码如何格式化？
 - windows 下不识别 /dev/tty
-
-## 备份
-
+- 以下钩子无法使用？
 ````
 "husky": {
     "hooks": {
@@ -53,3 +51,14 @@ const Demo = props => {
     }
   }
 ````
+
+## workflow
+
+- Make changes
+- Commit those changes
+- Make sure Travis turns green
+- Bump version in package.json
+- conventionalChangelog
+- Commit package.json and CHANGELOG.md files
+- Tag
+- Push
