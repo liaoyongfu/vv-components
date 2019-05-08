@@ -1,3 +1,12 @@
+# [1.0.0](https://github.com/liaoyongfu/vv-components/compare/v0.0.2...v1.0.0) (2019-05-08)
+
+
+### Bug Fixes
+
+* **docs:** 修复在线文档报错的bug ([6e3b527](https://github.com/liaoyongfu/vv-components/commit/6e3b527))
+
+
+
 ## <small>0.0.2 (2019-05-08)</small>
 
 * docs(package.json): add commitlint ([d07f408](https://github.com/liaoyongfu/vv-components/commit/d07f408))
