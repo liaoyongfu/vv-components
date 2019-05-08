@@ -1,7 +1,7 @@
 {
   "name": "vv-components",
   "description": "项目中一些组件的积累，基于 antd 组件库进行扩展",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "main": "lib/index.js",
   "module": "es/index.js",
   "license": "MIT",
@@ -17,6 +17,8 @@
   "dependencies": {},
   "devDependencies": {
     "@babel/core": "^7.4.4",
+    "@commitlint/cli": "^7.6.0",
+    "@commitlint/config-conventional": "^7.6.0",
     "@types/antd": "^1.0.0",
     "@types/enzyme": "^3.9.1",
     "@types/jest": "^24.0.12",
@@ -91,5 +93,16 @@
       "npm run lint",
       "git add"
     ]
+  },
+  "sideEffects": [
+    "dist/*",
+    "es/**/style/*",
+    "lib/**/style/*",
+    "*.less"
+  ],
+  "husky": {
+    "hooks": {
+      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
+    }
   }
 }
