@@ -7,7 +7,7 @@ const { configs, cleanDistFolder } = require('./_util');
 const SRC_PATH = path.resolve(__dirname, '../src/');
 const DIST_PATH = path.resolve(__dirname, '../dist/');
 
-console.log(`清空dist目录...`.green);
+console.log('清空dist目录...'.green);
 cleanDistFolder(['./dist/**']);
 // 编译dist
 console.log('编译dist...'.green);

@@ -25,7 +25,7 @@ module.exports = {
             components() {
                 return glob
                     .sync(path.resolve(__dirname, 'src/components/**/*.tsx'))
-                    .filter(function(module) {
+                    .filter(module => {
                         const paths = path.parse(module);
 
                         return (

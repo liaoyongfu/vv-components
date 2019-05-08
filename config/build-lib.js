@@ -5,7 +5,7 @@ const { buildLib, cleanDistFolder } = require('./_util');
 // src目录
 const SRC_PATH = path.resolve(__dirname, '../src/');
 const LIB_PATH = path.resolve(__dirname, '../lib/');
-const ES_PATH = path.resolve(__dirname, '../es/');
+// const ES_PATH = path.resolve(__dirname, '../es/');
 
 console.log('清空lib、es文件夹...'.green);
 cleanDistFolder(['./lib/**', './es/**']);

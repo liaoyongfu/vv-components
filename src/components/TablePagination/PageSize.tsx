@@ -14,21 +14,19 @@ interface Props {
     onChange?: (value: number) => void;
 }
 
-const PageSize = ({ data, value, onChange }: Props) => {
-    return (
-        <Select
-            onChange={onChange}
-            value={value}
-            style={{ width: 90, marginLeft: 8 }}
-        >
-            {data.map(item => (
-                <Option key={item.value} value={item.value}>
-                    {item.label}
-                </Option>
-            ))}
-        </Select>
-    );
-};
+const PageSize = ({ data, value, onChange }: Props) => (
+    <Select
+        onChange={onChange}
+        value={value}
+        style={{ width: 90, marginLeft: 8 }}
+    >
+        {data.map(item => (
+            <Option key={item.value} value={item.value}>
+                {item.label}
+            </Option>
+        ))}
+    </Select>
+);
 
 PageSize.defaultProps = {
     data: [

@@ -17,14 +17,13 @@ export interface Props {
     onChange?: (value: number) => void;
 }
 
-const TablePagination = ({ total, onChange, pageSize }: Props) => {
-    return (
-        <React.Fragment>
-            {total} items
-            <PageSize value={pageSize} onChange={onChange} />
-        </React.Fragment>
-    );
-};
+const TablePagination = ({ total, onChange, pageSize }: Props) => (
+    <React.Fragment>
+        {total}
+        items items
+        <PageSize value={pageSize} onChange={onChange} />
+    </React.Fragment>
+);
 
 TablePagination.defaultProps = {
     total: 0,
