@@ -45,6 +45,7 @@
     "jest": "^24.7.1",
     "less": "^3.9.0",
     "less-loader": "^4.1.0",
+    "lint-staged": "^8.1.6",
     "mini-css-extract-plugin": "^0.6.0",
     "react": "^16.8.6",
     "react-docgen-typescript": "^1.12.4",
@@ -70,7 +71,10 @@
     "build:lib": "tsc --build tsconfig.json",
     "build:es": "tsc --build tsconfig.es.json",
     "build-website": "styleguidist build",
-    "test": "jest"
+    "test": "jest",
+    "commit": "git cz",
+    "precommit": "lint-staged",
+    "lint": "eslint --fix --ext .tsx"
   },
   "peerDependencies": {
     "antd": "^3.16.5",
@@ -81,5 +85,11 @@
     "commitizen": {
       "path": "./node_modules/cz-conventional-changelog"
     }
+  },
+  "lint-staged": {
+    "**/*.tsx": [
+      "npm run lint",
+      "git add"
+    ]
   }
 }
