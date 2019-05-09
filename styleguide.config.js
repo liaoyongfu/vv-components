@@ -5,7 +5,7 @@ const webpackConfig = require('./config/build-doc');
 
 module.exports = {
     title: 'VV Components',
-    require: ['antd/dist/antd.min.css'],
+    require: ['antd/dist/antd.min.css', './example/doc.css'],
     webpackConfig,
     propsParser: docgen.withDefaultConfig({
         propFilter: { skipPropsWithoutDoc: true }
@@ -21,7 +21,7 @@ module.exports = {
             content: './README.md'
         },
         {
-            name: '组件',
+            name: 'Components',
             components() {
                 return glob
                     .sync(path.resolve(__dirname, 'src/components/**/*.tsx'))
@@ -41,6 +41,18 @@ module.exports = {
         StyleGuide: {
             footer: {
                 display: 'none'
+            }
+        },
+        Code: {
+            code: {
+                color: '#e83e8c',
+                margin: '0 5px'
+            }
+        },
+        Blockquote: {
+            blockquote: {
+                padding: '0 20px',
+                borderLeft: '5px solid #eee'
             }
         }
     },

@@ -9,7 +9,7 @@ module.exports = {
             "devDependencies": [
                 '**/tests/**.js',
                 '/mock/**/**.js',
-                '**/**.test.js',
+                '**/**.test.{js,jsx,tsx}',
                 "config/**/**.js",
                 'styleguide.config.js'
             ]

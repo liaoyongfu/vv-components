@@ -29,13 +29,12 @@ const Demo = props => {
 
 ## TODO
 
-- Eslint 配置（TS 环境下）
-- 构建
-- 测试和 CI
-- 规范化提交（CHANGLOG 自动生成、git 钩子）
-- 说明文档编写
-- 增加 utils？
-- ...
+- [x] Eslint 配置（TS 环境下）
+- [ ] 构建
+- [ ] 测试和 CI
+- [x] 规范化提交（CHANGLOG 自动生成、git 钩子）
+- [ ] 说明文档编写
+- [x] 增加 utils
 
 ## 问题
 
@@ -44,7 +43,8 @@ const Demo = props => {
 - md 文件里的代码如何格式化？
 - windows 下不识别 /dev/tty
 - 以下钩子无法使用？
-````
+
+````static
 "husky": {
     "hooks": {
       "prepare-commit-msg": "exec < /dev/tty && git cz --hook"

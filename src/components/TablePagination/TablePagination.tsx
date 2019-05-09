@@ -19,8 +19,7 @@ export interface Props {
 
 const TablePagination = ({ total, onChange, pageSize }: Props) => (
     <React.Fragment>
-        {total}
-        items items
+        {total} items
         <PageSize value={pageSize} onChange={onChange} />
     </React.Fragment>
 );

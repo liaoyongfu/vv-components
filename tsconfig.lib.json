@@ -4,7 +4,8 @@
     "module": "commonjs",
     "target": "es5",
     "jsx": "react",
-    "moduleResolution": "node"
+    "moduleResolution": "node",
+    "declaration": true
   },
   "include": [
     "src/**/*"
