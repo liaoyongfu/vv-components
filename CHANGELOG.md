@@ -1,3 +1,11 @@
+## 1.1.0 (2019-05-09)
+
+* feat(component): add QuickForm component ([138f921](https://github.com/liaoyongfu/vv-components/commit/138f921))
+* docs(docs): 更新文档 ([a3ec844](https://github.com/liaoyongfu/vv-components/commit/a3ec844))
+* build(eslint): use eslint-config-vv/react-typescript ([04ec89f](https://github.com/liaoyongfu/vv-components/commit/04ec89f))
+
+
+
 ## [1.0.1](https://github.com/liaoyongfu/vv-components/compare/v0.0.2...v1.0.1) (2019-05-08)
 
 
