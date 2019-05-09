@@ -33,7 +33,8 @@ module.exports = {
                                 paths.name && /\/[A-Z]\w*\.tsx$/.test(module)
                         );
                     });
-            }
+            },
+            sectionDepth: 1
         }
     ],
     pagePerSection: true,
