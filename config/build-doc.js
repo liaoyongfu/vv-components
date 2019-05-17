@@ -1,4 +1,5 @@
 const merge = require('webpack-merge');
+const path = require('path');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const base = require('./base');
 
@@ -31,6 +32,11 @@ module.exports = merge.smartStrategy({
             chunkFilename: '[id].css'
         })
     ],
+    resolve: {
+        alias: {
+            'vv-components': path.resolve(__dirname, '../src')
+        }
+    },
     // not work?
     // see: https://github.com/styleguidist/react-styleguidist/issues/136
     optimization: {

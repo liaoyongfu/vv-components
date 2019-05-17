@@ -8,7 +8,7 @@ export interface Props {
      */
     config: Array<{
         /**
-         * field 名称
+         * field 名称，不传的话直接渲染 component 字段
          */
         field: string;
         /**
@@ -48,7 +48,9 @@ const QuickForm = ({ config, form }: Props) => {
             label={item.label}
             {...item.props}
         >
-            {getFieldDecorator(item.field, item.config)(item.component)}
+            {item.field
+                ? getFieldDecorator(item.field, item.config)(item.component)
+                : item.component}
         </Form.Item>
     ));
 };
