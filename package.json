@@ -1,7 +1,7 @@
 {
   "name": "vv-components",
   "description": "项目中一些组件的积累，基于 antd 组件库进行扩展",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "main": "lib/index.js",
   "module": "es/index.js",
   "license": "MIT",
@@ -85,7 +85,8 @@
     "test": "jest",
     "commit": "git cz",
     "precommit": "lint-staged",
-    "lint": "eslint --fix --ext .tsx"
+    "lint": "eslint --fix --ext .tsx",
+    "changelog": "conventional-changelog -i CHANGELOG.md -s"
   },
   "peerDependencies": {
     "antd": "^3.16.5",
