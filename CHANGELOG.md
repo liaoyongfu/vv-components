@@ -1,3 +1,9 @@
+## <small>1.1.2 (2019-05-20)</small>
+
+* fix: fix quickform component type to React.ReactElement ([bb08a30](https://github.com/liaoyongfu/vv-components/commit/bb08a30))
+
+
+
 ## <small>1.1.1 (2019-05-17)</small>
 
 * feat: add custom render at quickform component ([0c5e462](https://github.com/liaoyongfu/vv-components/commit/0c5e462))
