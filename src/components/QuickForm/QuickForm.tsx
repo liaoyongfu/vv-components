@@ -14,7 +14,7 @@ export interface Props {
         /**
          * Form.Item 的 props
          */
-        props: object;
+        props?: object;
         /**
          * field 配置，即 getFieldDecorator 第二个参数
          */
@@ -22,11 +22,11 @@ export interface Props {
         /**
          * label 和 config 二选一
          */
-        label?: string | React.ElementType;
+        label?: string | React.ReactElement;
         /**
          * field 渲染组件
          */
-        component: React.ElementType;
+        component: React.ReactElement;
     }>;
     /**
      * Form 注入的属性 form
