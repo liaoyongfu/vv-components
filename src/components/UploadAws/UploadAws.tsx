@@ -1,7 +1,6 @@
 import * as React from 'react';
 import { Upload, message, notification } from 'antd';
 import fetch from 'isomorphic-fetch';
-import { UploadFile } from 'antd/lib/upload/interface';
 
 export interface Props {
     fileList: Array<any>;
@@ -149,7 +148,7 @@ class UploadAws extends React.PureComponent<Props, any> {
     };
 
     // 上传
-    customUpload = async (file: UploadFile) => {
+    customUpload = async file => {
         const { sysCode, businessCode, uploadUrl } = this.props;
         const params = {
             sysCode,
@@ -166,7 +165,7 @@ class UploadAws extends React.PureComponent<Props, any> {
         // 返回内容
         if (response.data && response.data.length > 0) {
             const { keyName, preUrl, fileUrl } = response.data[0];
-            const uploadParams = { preUrl, file: file.originFileObj };
+            const uploadParams = { preUrl, file };
             // 上传至服务器
             uploadToServer(uploadParams);
 
