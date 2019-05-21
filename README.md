@@ -58,6 +58,18 @@ const Demo = props => {
 2. git commit 后：为了规范化提交消息，使用 [约定式提交规范](https://www.conventionalcommits.org/zh/v1.0.0-beta.3/) 进行提交，所以我们在 `git add .` 后，
 使用 `yarn commit` 命令进行提交，而不是 `git commit -m 'xxx'`。提交时的日志需要遵从此规范。当你提交后，还会进行 commit 日志校验，如果不符合规范会报错。
 
+- 贡献流程（在 develop 开发）
+    - 修改
+    - git add、git commit
+    - 本地自测（使用 yarn link后，在示例项目中自测）
+    - 修改版本号
+    - yarn build
+    - 自动生成 CHANGELOG.md 文件（运行 yarn changelog）
+    - git add、git commit
+    - git push
+    - git tag
+    
+
 ## 规范参考
 
 - [Typescript 官方决定全面采用 Eslint](https://msd.misuland.com/pd/2884249965817765216)
