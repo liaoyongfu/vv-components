@@ -45,7 +45,7 @@
     "eslint-config-airbnb": "^17.1.0",
     "eslint-config-airbnb-typescript": "^3.0.0",
     "eslint-config-prettier": "^4.2.0",
-    "eslint-config-vv": "^1.0.0",
+    "eslint-config-vv": "^1.1.0",
     "eslint-plugin-compat": "^3.1.1",
     "eslint-plugin-import": "^2.17.2",
     "eslint-plugin-jsx-a11y": "^6.2.1",
@@ -87,7 +87,7 @@
     "test": "jest",
     "commit": "git cz",
     "precommit": "lint-staged",
-    "lint": "eslint --fix --ext .tsx",
+    "lint": "eslint --fix . --ext .tsx",
     "changelog": "conventional-changelog -i CHANGELOG.md -s"
   },
   "peerDependencies": {

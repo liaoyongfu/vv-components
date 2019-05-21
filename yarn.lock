@@ -3397,10 +3397,10 @@ eslint-config-prettier@^4.2.0:
   dependencies:
     get-stdin "^6.0.0"
 
-eslint-config-vv@^1.0.0:
-  version "1.0.0"
-  resolved "http://172.16.1.127:8081/repository/vv-npm-group/eslint-config-vv/-/eslint-config-vv-1.0.0.tgz#e027d96f32082ea4eef7b249d3ad9f730339be2f"
-  integrity sha512-009ZQN9kMTjOpymsaqjIj9VNrWxqVDloPWkRwm9BNfIfYCTG+/TVxrGemtGesci96dJwqWa75ksx3ISPVEvNoQ==
+eslint-config-vv@^1.1.0:
+  version "1.1.0"
+  resolved "http://172.16.1.127:8081/repository/vv-npm-group/eslint-config-vv/-/eslint-config-vv-1.1.0.tgz#175fd1abe72de223762aa12b2717e66a6b4ae06f"
+  integrity sha512-iukk5K6XX3+4Sm3qWFeHCQpq/3yGXpUczb8j47VcIZ4InrHsP52fagonAfFZn8Kb0010kWgiVYEqd3Tmwm0XbA==
 
 eslint-import-resolver-node@^0.3.2:
   version "0.3.2"

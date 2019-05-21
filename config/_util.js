@@ -1,3 +1,4 @@
+const webpack = require('webpack');
 const babel = require('@babel/core');
 const path = require('path');
 const fs = require('fs');
@@ -32,7 +33,7 @@ function fileDisplay(filePath, callback) {
         const stats = fs.statSync(filedir);
         const isFile = stats.isFile(); // 是文件
         const isDir = stats.isDirectory(); // 是文件夹
-        if (isFile && path.extname(filename) === '.js') {
+        if (isFile && path.extname(filename) === '.tsx') {
             callback(
                 path.relative(path.resolve(__dirname, '../src/'), filedir),
                 filename
@@ -46,24 +47,25 @@ function fileDisplay(filePath, callback) {
 
 function buildLib(modules, srcPath, distPath) {
     fileDisplay(srcPath, dir => {
-        const result = babel.transformFileSync(
-            path.join(srcPath, dir),
-            {},
-            err => {
-                if (err) {
-                    throw err;
-                }
-            }
-        );
+        const result = babel.transformFileSync(path.join(srcPath, dir), {});
+        const filePath = path.join(distPath, dir);
         if (!fs.existsSync(distPath)) {
             fs.mkdirSync(distPath);
         }
-        if (!fs.existsSync(path.dirname(`${distPath}/${dir}`))) {
-            fs.mkdirSync(path.dirname(`${distPath}/${dir}`));
+        if (!fs.existsSync(path.dirname(filePath))) {
+            fs.mkdirSync(path.dirname(filePath), { recursive: true });
         }
-        fs.writeFileSync(`${distPath}/${dir}`, result.code, 'utf8', {
-            flag: 'w+'
-        });
+        fs.writeFileSync(
+            path.join(
+                path.dirname(filePath),
+                `${path.basename(filePath, '.tsx')}.js`
+            ),
+            result.code,
+            {
+                flag: 'w+',
+                encoding: 'utf8'
+            }
+        );
     });
 }
 
