@@ -20,7 +20,11 @@ module.exports = {
                                         style: false
                                     })
                                 ]
-                            })
+                            }),
+                            reportFiles: [
+                                'src/**/*.{ts,tsx}',
+                                '{,!(node_modules)/}**/*.{ts,tsx}'
+                            ]
                         }
                     }
                 ]
