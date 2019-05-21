@@ -15,7 +15,9 @@
     "type": "git",
     "url": "http://172.16.1.127:8050/VV-COMM/VV-FRONTEND-COMPONENTS"
   },
-  "dependencies": {},
+  "dependencies": {
+    "isomorphic-fetch": "^2.2.1"
+  },
   "devDependencies": {
     "@babel/core": "^7.4.4",
     "@babel/plugin-proposal-class-properties": "^7.4.4",

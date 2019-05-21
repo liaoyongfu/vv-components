@@ -34,7 +34,7 @@ module.exports = merge.smartStrategy({
     ],
     resolve: {
         alias: {
-            'vv-components': path.resolve(__dirname, '../src')
+            'vv-frontend-components': path.resolve(__dirname, '../src')
         }
     },
     // not work?

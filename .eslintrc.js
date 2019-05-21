@@ -14,5 +14,10 @@ module.exports = {
                 'styleguide.config.js'
             ]
         }]
+    },
+    settings: {
+        "polyfills": [
+            "Object.assign",
+        ]
     }
 };
