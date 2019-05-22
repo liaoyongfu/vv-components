@@ -85,6 +85,38 @@ const Demo = props => {
 - [ ] 说明文档编写
 - [x] 增加 utils
 
+## 注意事项
+
+- 组件一般如下：
+
+````
+- QuickForm
+    - index.tsx
+    - QuickForm.tsx
+    - QuickForm.test.tsx
+    - QuickForm.less
+    - README.md
+````
+
+所以我们在项目中使用的情况下，需要结合 `babel-plugin-import` 按需加载样式：
+
+````
+// .babelrc
+plugins: [
+    [
+        "import",
+        {
+            libraryName: 'vv-frontend-components',
+            libraryDirectory: 'lib', // default: lib
+            style: name => `${name}/${name}.less`,  // 使用类似 QuickForm/QuickForm.less 样式文件
+            camel2DashComponentName: false  // 不转换名称为横岗，因为我们和组件文件夹名称是大写的
+        }
+    ]
+]
+````
+
+- 我们组件编译时已经配置 `babel-plugin-import` 按需加载了 antd 的样式，现在不会有没有样式的问题了。
+
 ## 问题
 
 - 在 md 文件中无法用 Typescript？无法用类属性语法？
@@ -93,21 +125,10 @@ const Demo = props => {
 - windows 下不识别 /dev/tty
 - 以下钩子无法使用？
 
-````static
+````html
 "husky": {
     "hooks": {
       "prepare-commit-msg": "exec < /dev/tty && git cz --hook"
     }
   }
 ````
-
-## workflow
-
-- Make changes
-- Commit those changes
-- Make sure Travis turns green
-- Bump version in package.json
-- conventionalChangelog
-- Commit package.json and CHANGELOG.md files
-- Tag
-- Push

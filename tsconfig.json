@@ -1,11 +1,12 @@
 {
   "compilerOptions": {
-    "outDir": "es",
-    "module": "es6",
-    "target": "es6",
-    "moduleResolution": "node",
+    "outDir": "lib",
+    "module": "commonjs",
+    "target": "es5",
     "jsx": "react",
-    "declaration": true
+    "moduleResolution": "node",
+    "declaration": true,
+    "downlevelIteration": true
   },
   "include": [
     "src/**/*"
@@ -14,6 +15,7 @@
     "node_modules",
     "dist",
     "es",
-    "lib"
+    "lib",
+    "**/*.test.tsx"
   ]
 }
