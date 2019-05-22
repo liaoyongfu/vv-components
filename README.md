@@ -106,10 +106,10 @@ plugins: [
     [
         "import",
         {
-            libraryName: 'vv-frontend-components',
-            libraryDirectory: 'lib', // default: lib
-            style: name => `${name}/${name}.less`,  // 使用类似 QuickForm/QuickForm.less 样式文件
-            camel2DashComponentName: false  // 不转换名称为横岗，因为我们和组件文件夹名称是大写的
+          libraryName: 'vv-frontend-components',
+          libraryDirectory: 'lib/components', // default: lib
+          style: 'less',  // 使用类似 QuickForm/QuickForm.less 样式文件
+          camel2DashComponentName: false  // 不转换名称为横岗，因为我们和组件文件夹名称是大写的
         }
     ]
 ]
