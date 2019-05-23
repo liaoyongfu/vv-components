@@ -1,4 +1,6 @@
+const path = require('path');
 const tsImportPluginFactory = require('ts-import-plugin');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
 module.exports = {
     entry: './src/index.tsx',
@@ -17,7 +19,7 @@ module.exports = {
                                     tsImportPluginFactory({
                                         libraryName: 'antd',
                                         libraryDirectory: 'lib',
-                                        style: false
+                                        style: true
                                     })
                                 ]
                             })
@@ -47,7 +49,11 @@ module.exports = {
                 test: /\.less$/,
                 use: [
                     {
-                        loader: 'style-loader'
+                        loader: MiniCssExtractPlugin.loader,
+                        options: {
+                            hmr: process.env.NODE_ENV === 'development',
+                            publicPath: '../../'
+                        }
                     },
                     {
                         loader: 'css-loader'
@@ -86,5 +92,13 @@ module.exports = {
     },
     resolve: {
         extensions: ['.ts', '.tsx', '.js', '.json']
-    }
+    },
+    plugins: [
+        new MiniCssExtractPlugin({
+            // Options similar to the same options in webpackOptions.output
+            // both options are optional
+            filename: '[name].css',
+            chunkFilename: '[id].css'
+        })
+    ]
 };

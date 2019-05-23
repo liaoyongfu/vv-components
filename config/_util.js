@@ -5,6 +5,7 @@ const fs = require('fs');
 const rimraf = require('rimraf');
 const merge = require('webpack-merge');
 const nodeExternals = require('webpack-node-externals');
+const less = require('less');
 const base = require('./base');
 
 function cleanDistFolder(distPaths) {
@@ -39,8 +40,7 @@ function fileDisplay(filePath, callback) {
             path.extname(filename) === '.tsx'
         ) {
             callback(
-                path.relative(path.resolve(__dirname, '../src/'), filedir),
-                filename
+                path.relative(path.resolve(__dirname, '../src/'), filedir)
             );
         }
         if (isDir) {
@@ -51,47 +51,49 @@ function fileDisplay(filePath, callback) {
 
 function buildLib(modules, srcPath, distPath) {
     fileDisplay(srcPath, dir => {
-        const result = babel.transformFileSync(path.join(srcPath, dir), {
-            presets: [
-                [
-                    '@babel/preset-env',
-                    {
-                        modules
-                    }
-                ],
-                '@babel/preset-react',
-                '@babel/preset-typescript'
-            ],
-            plugins: [
-                '@babel/plugin-proposal-class-properties',
-                [
-                    'import',
-                    {
-                        libraryName: 'antd',
-                        libraryDirectory: 'lib', // default: lib
-                        style: true
-                    }
-                ]
-            ]
-        });
         const filePath = path.join(distPath, dir);
-        if (!fs.existsSync(distPath)) {
-            fs.mkdirSync(distPath);
-        }
-        if (!fs.existsSync(path.dirname(filePath))) {
-            fs.mkdirSync(path.dirname(filePath), { recursive: true });
-        }
-        fs.writeFileSync(
-            path.join(
-                path.dirname(filePath),
-                `${path.basename(filePath, '.tsx')}.js`
-            ),
-            result.code,
-            {
-                flag: 'w+',
-                encoding: 'utf8'
+        {
+            const result = babel.transformFileSync(path.join(srcPath, dir), {
+                presets: [
+                    [
+                        '@babel/preset-env',
+                        {
+                            modules
+                        }
+                    ],
+                    '@babel/preset-react',
+                    '@babel/preset-typescript'
+                ],
+                plugins: [
+                    '@babel/plugin-proposal-class-properties',
+                    [
+                        'import',
+                        {
+                            libraryName: 'antd',
+                            libraryDirectory: 'lib', // default: lib
+                            style: true
+                        }
+                    ]
+                ]
+            });
+            if (!fs.existsSync(distPath)) {
+                fs.mkdirSync(distPath);
             }
-        );
+            if (!fs.existsSync(path.dirname(filePath))) {
+                fs.mkdirSync(path.dirname(filePath), { recursive: true });
+            }
+            fs.writeFileSync(
+                path.join(
+                    path.dirname(filePath),
+                    `${path.basename(filePath, '.tsx')}.js`
+                ),
+                result.code,
+                {
+                    flag: 'w+',
+                    encoding: 'utf8'
+                }
+            );
+        }
     });
 }
 
