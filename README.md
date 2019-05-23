@@ -103,15 +103,25 @@ const Demo = props => {
 ````
 // .babelrc
 plugins: [
-    [
-        "import",
-        {
-          libraryName: 'vv-frontend-components',
-          libraryDirectory: 'lib/components', // default: lib
-          style: 'less',  // 使用类似 QuickForm/QuickForm.less 样式文件
-          camel2DashComponentName: false  // 不转换名称为横岗，因为我们和组件文件夹名称是大写的
-        }
-    ]
+  [
+    "import",
+    {
+      libraryName: 'vv-frontend-components',
+      libraryDirectory: 'lib/components', // default: lib
+        customName: (name) => {
+          if(name === 'utils'){
+            return 'vv-frontend-components/lib/utils/' + name;
+          }
+          return 'vv-frontend-components/lib/components/' + name;
+        },
+      style: name => {
+        if(name.indexOf('utils') !== -1) return false;
+        let filepath = name.split('/');
+        return `${name}/${filepath[filepath.length - 1]}.css`;
+      },  // 使用类似 QuickForm/QuickForm.less 样式文件
+      camel2DashComponentName: false  // 不转换名称为横岗，因为我们和组件文件夹名称是大写的
+    }
+  ]
 ]
 ````
 
