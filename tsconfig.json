@@ -9,7 +9,7 @@
     "downlevelIteration": true
   },
   "include": [
-    "src/**/*"
+    "src/**/**.tsx"
   ],
   "exclude": [
     "node_modules",

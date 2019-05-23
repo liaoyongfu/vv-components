@@ -4,26 +4,59 @@ const del = require('del');
 const ts = require('gulp-typescript');
 const merge = require('merge2');
 const less = require('gulp-less');
-const tsconfig = require('../tsconfig.json');
+const babel = require('gulp-babel');
+
+function compileTsx(modules, dest) {
+    return gulp
+        .src('../src/**/*.tsx')
+        .pipe(
+            babel({
+                presets: [
+                    [
+                        '@babel/preset-env',
+                        {
+                            modules
+                        }
+                    ],
+                    '@babel/preset-react',
+                    '@babel/preset-typescript'
+                ],
+                plugins: [
+                    '@babel/plugin-proposal-class-properties',
+                    [
+                        'import',
+                        {
+                            libraryName: 'antd',
+                            libraryDirectory: 'lib', // default: lib
+                            style: true
+                        }
+                    ]
+                ]
+            })
+        )
+        .pipe(gulp.dest(dest));
+}
 
 gulp.task('compileTs:lib', async () => {
+    compileTsx('commonjs', '../lib');
+});
+
+gulp.task('compile:lib-type', () => {
     const tsProject = ts.createProject('../tsconfig.json');
     const tsResult = gulp.src('../src/**/*.tsx').pipe(tsProject());
-    return merge([
-        tsResult.dts.pipe(gulp.dest('../lib')),
-        tsResult.js.pipe(gulp.dest('../lib'))
-    ]);
+    return tsResult.dts.pipe(gulp.dest('../lib'));
 });
 
 gulp.task('compileTs:es', async () => {
+    compileTsx(false, '../es');
+});
+
+gulp.task('compile:es-type', () => {
     const tsProject = ts.createProject('../tsconfig.json', {
         module: 'es6'
     });
     const tsResult = gulp.src('../src/**/*.tsx').pipe(tsProject());
-    return merge([
-        tsResult.dts.pipe(gulp.dest('../es')),
-        tsResult.js.pipe(gulp.dest('../es'))
-    ]);
+    return tsResult.dts.pipe(gulp.dest('../es'));
 });
 
 gulp.task('less', () => {
@@ -53,5 +86,13 @@ gulp.task('clean', () => {
 
 gulp.task(
     'default',
-    gulp.series('clean', 'compileTs:es', 'compileTs:lib', 'less', 'assert-copy')
+    gulp.series(
+        'clean',
+        'compileTs:es',
+        'compile:es-type',
+        'compileTs:lib',
+        'compile:lib-type',
+        'less',
+        'assert-copy'
+    )
 );

@@ -5426,6 +5426,16 @@ gud@^1.0.0:
   resolved "https://registry.yarnpkg.com/gud/-/gud-1.0.0.tgz#a489581b17e6a70beca9abe3ae57de7a499852c0"
   integrity sha512-zGEOVKFM5sVPPrYs7J5/hYEw2Pof8KCyOwyhG8sAF26mCAeUFAcYPu1mwB7hhpIP29zOIBaDqwuHdLp0jvZXjw==
 
+gulp-babel@^8.0.0:
+  version "8.0.0"
+  resolved "http://172.16.1.127:8081/repository/vv-npm-group/gulp-babel/-/gulp-babel-8.0.0.tgz#e0da96f4f2ec4a88dd3a3030f476e38ab2126d87"
+  integrity sha1-4NqW9PLsSojdOjAw9HbjirISbYc=
+  dependencies:
+    plugin-error "^1.0.1"
+    replace-ext "^1.0.0"
+    through2 "^2.0.0"
+    vinyl-sourcemaps-apply "^0.2.0"
+
 gulp-cli@^2.2.0:
   version "2.2.0"
   resolved "http://172.16.1.127:8081/repository/vv-npm-group/gulp-cli/-/gulp-cli-2.2.0.tgz#5533126eeb7fe415a7e3e84a297d334d5cf70ebc"
