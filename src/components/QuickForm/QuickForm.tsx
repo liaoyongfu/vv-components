@@ -1,3 +1,4 @@
+/* eslint-disable react/no-array-index-key */
 import * as React from 'react';
 import { Form } from 'antd';
 import { GetFieldDecoratorOptions } from 'antd/lib/form/Form';
@@ -42,12 +43,8 @@ export interface Props {
 const QuickForm = ({ config, form }: Props) => {
     const { getFieldDecorator } = form;
 
-    return config.map(item => (
-        <Form.Item
-            key={`${item.field}_${item.label}`}
-            label={item.label}
-            {...item.props}
-        >
+    return config.map((item, index) => (
+        <Form.Item key={index} label={item.label} {...item.props}>
             {item.field
                 ? getFieldDecorator(item.field, item.config)(item.component)
                 : item.component}
