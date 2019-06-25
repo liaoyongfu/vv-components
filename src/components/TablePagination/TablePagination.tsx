@@ -15,18 +15,23 @@ export interface Props {
      * @param value 改变后 pageSize 的值
      */
     onChange?: (value: number) => void;
+    /**
+     * items 的显示名称
+     */
+    itemsName?: string;
 }
 
-const TablePagination = ({ total, onChange, pageSize }: Props) => (
+const TablePagination = ({ total, onChange, pageSize, itemsName }: Props) => (
     <React.Fragment>
-        {total} items
+        {total} {itemsName}
         <PageSize value={pageSize} onChange={onChange} />
     </React.Fragment>
 );
 
 TablePagination.defaultProps = {
     total: 0,
-    pageSize: 10
+    pageSize: 10,
+    itemsName: 'items'
 };
 
 export default TablePagination;

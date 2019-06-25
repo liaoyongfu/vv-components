@@ -1,7 +1,7 @@
 基于 antd 的 Table 组件，带上了总数和每页数量。
 
 ````jsx harmony
-<TablePagination value={10}/>
+<TablePagination total={100} pageSize={20} />
 ````
 
 结合 antd 使用示例：
