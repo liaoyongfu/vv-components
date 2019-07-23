@@ -56,7 +56,7 @@ const Demo =props=>{
                                     initialValue: []
                             })(
                                 <CascaderLoad
-                                 dictUrl='http://172.16.1.98:7003/api/dict/v1/getList'
+                                 dictUrl='/api/dict/v1/getList'
                                  request={request}
                                  cascaderProps={{
                                     placeholder: '请选择籍贯'

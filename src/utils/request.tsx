@@ -42,7 +42,6 @@ const errorHandler = error => {
  */
 const request = extend({
     errorHandler, // 默认错误处理
-    mode: 'cors', // 发送跨域请求
     credentials: 'include' // 默认请求是否带上cookie
 });
 
