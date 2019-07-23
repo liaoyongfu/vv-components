@@ -1,11 +1,9 @@
-const webpack = require('webpack');
 const babel = require('@babel/core');
 const path = require('path');
 const fs = require('fs');
 const rimraf = require('rimraf');
 const merge = require('webpack-merge');
 const nodeExternals = require('webpack-node-externals');
-const less = require('less');
 const base = require('./base');
 
 function cleanDistFolder(distPaths) {
