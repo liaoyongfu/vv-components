@@ -1,8 +1,8 @@
 import * as React from 'react';
 import { Cascader } from 'antd';
-import request from '@/utils/request';
+import { RequestMethod } from 'umi-request';
 
-const china: { [key: string]: any } = {
+const china: { [key: string]: number | string | false } = {
     id: 0,
     parentId: 0,
     parentName: '',
@@ -15,20 +15,44 @@ const china: { [key: string]: any } = {
 };
 export interface Props {
     onChange: (e: any) => void;
+    /**
+     * 默认值
+     */
     value: string[];
+    /**
+     * cascader组件配置项
+     */
     cascaderProps: object;
-    asianData: Array<any>;
+    /**
+     * 国家数据字典
+     */
+    asianData: Array<{ [key: string]: any }>;
+    /**
+     * 字典接口
+     */
+    dictUrl: string;
+    /**
+     * request方法
+     */
+    request: RequestMethod<false>;
 }
 /**
  * 联级选择器
- * 动态加载行政区域数据asian(国家) province(省份)，city(城市)，area(区)
+ *
  */
-const CascaderLoad = React.forwardRef((props: Props, ref: any) => {
-    const { onChange, value, cascaderProps, asianData } = props;
+const CascaderLoad = (props: Props) => {
+    const {
+        onChange,
+        value,
+        cascaderProps,
+        asianData,
+        dictUrl,
+        request
+    } = props;
     const [options, setOptions] = React.useState([]);
 
     const fetchDic = async param => {
-        const result = await request('/api/dict/v1/getList', {
+        const result = await request(dictUrl, {
             method: 'POST',
             data: param
         });
@@ -77,17 +101,15 @@ const CascaderLoad = React.forwardRef((props: Props, ref: any) => {
         setOptions([china].concat(asianData) || [china]);
     }, [asianData]);
     return (
-        <div ref={ref}>
-            <Cascader
-                value={value}
-                fieldNames={{ label: 'dictName', value: 'dictName' }}
-                options={options}
-                onChange={handleChange}
-                changeOnSelect
-                loadData={loadData}
-                {...cascaderProps}
-            />
-        </div>
+        <Cascader
+            value={value}
+            fieldNames={{ label: 'dictName', value: 'dictName' }}
+            options={options}
+            onChange={handleChange}
+            changeOnSelect
+            loadData={loadData}
+            {...cascaderProps}
+        />
     );
-});
+};
 export default CascaderLoad;
