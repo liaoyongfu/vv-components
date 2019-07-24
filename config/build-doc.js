@@ -28,7 +28,7 @@ module.exports = merge.smartStrategy({
         proxy: {
             '/api/dict': {
                 target: 'http://172.16.1.98:7003',
-                // changeOrigin: true,
+                changeOrigin: true, // target是域名的话需要这个参数
                 secure: false
             }
         }
