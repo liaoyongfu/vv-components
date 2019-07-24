@@ -3,7 +3,7 @@
 
 ## 传入参数
 - onChange：form onChange 事件
-- value： 表单默认值
+- value： 表单默认值 如果在 form 中使用则需要在 getFieldDecorator 中设置 initialValue
 - cascaderProps：cascader 组件配置项
 - asianData： 国家数据字典
 - getData：获取字典数据的请求方法

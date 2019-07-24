@@ -7,6 +7,7 @@
     "moduleResolution": "node",
     "declaration": true,
     "downlevelIteration": true,
+    // "strictNullChecks":true,
     "baseUrl": ".",
     "paths": {
       "@/*": ["./src/*"]

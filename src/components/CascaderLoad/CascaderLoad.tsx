@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { Cascader } from 'antd';
 
-const china: { [key: string]: number | string | false } = {
+const china: { [key: string]: any } = {
     id: 0,
     parentId: 0,
     parentName: '',
@@ -17,7 +17,7 @@ export interface ParamType {
     parentId: number;
 }
 export interface Props {
-    onChange: (e: any) => void;
+    onChange: (e: string[]) => void;
     /**
      * 默认值
      */
@@ -33,7 +33,7 @@ export interface Props {
     /**
      * 获取字典数据的请求方法
      */
-    getData: (param: ParamType) => Promise<any>;
+    getData: (param: ParamType) => Promise<Array<any>>;
 }
 /**
  * 联级选择器
@@ -49,7 +49,7 @@ const CascaderLoad = (props: Props) => {
     const loadData = selectedOptions => {
         const targetOption = selectedOptions[selectedOptions.length - 1];
         targetOption.loading = true;
-        let codeTmp: string = null;
+        let codeTmp: string = '';
         let isLeaf = false;
         const { code } = targetOption;
         switch (code) {
@@ -64,7 +64,7 @@ const CascaderLoad = (props: Props) => {
                 isLeaf = true;
                 break;
             default:
-                codeTmp = null;
+                codeTmp = '';
                 isLeaf = false;
         }
         getData({
