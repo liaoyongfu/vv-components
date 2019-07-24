@@ -9,6 +9,25 @@
 - dictUrl：字典接口
 - request： request 方法
 
+```jsx static
+   <Form>
+        <Form.Item label="籍贯">
+            {getFieldDecorator('nationalArea', {
+                initialValue: []
+                    })(
+                <CascaderLoad
+                      dictUrl='/api/dict/v1/getList'
+                      request={request}
+                      cascaderProps={{
+                      placeholder: '请选择籍贯'
+                          }}
+                      asianData={asianMocks}
+                      />
+                )}
+        </Form.Item>
+  </Form>
+```
+
 ```jsx harmony
 import React from 'react';
 import {

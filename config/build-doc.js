@@ -25,8 +25,6 @@ module.exports = merge.smartStrategy({
         ]
     },
     devServer: {
-        hot: true,
-        port: 6060,
         proxy: {
             '/api/dict': {
                 target: 'http://172.16.1.98:7003',
