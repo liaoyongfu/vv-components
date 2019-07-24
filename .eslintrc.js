@@ -5,6 +5,7 @@ module.exports = {
         "vv/react-typescript"
     ],
     rules: {
+        'import/no-unresolved': [2, { ignore: ['^@/'] }],
         "import/no-extraneous-dependencies": ['error', {
             "devDependencies": [
                 '**/tests/**.js',

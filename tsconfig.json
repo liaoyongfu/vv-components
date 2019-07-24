@@ -6,7 +6,12 @@
     "jsx": "react",
     "moduleResolution": "node",
     "declaration": true,
-    "downlevelIteration": true
+    "downlevelIteration": true,
+    // "strictNullChecks":true,
+    "baseUrl": ".",
+    "paths": {
+      "@/*": ["./src/*"]
+    }
   },
   "include": [
     "src/**/**.tsx"

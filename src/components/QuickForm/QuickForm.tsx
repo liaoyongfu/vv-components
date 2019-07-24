@@ -2,7 +2,6 @@
 import * as React from 'react';
 import { Form } from 'antd';
 import { GetFieldDecoratorOptions } from 'antd/lib/form/Form';
-import FormItem from 'antd/lib/form/FormItem';
 
 export interface Props {
     /**
@@ -41,19 +40,14 @@ export interface Props {
     };
 }
 
-const QuickForm = React.forwardRef((props: Props, ref: React.Ref<FormItem>) => {
+const QuickForm = (props: Props) => {
     const { config, form } = props;
     const { getFieldDecorator } = form;
 
     return (
         <React.Fragment>
             {config.map((item, index) => (
-                <Form.Item
-                    ref={ref}
-                    key={index}
-                    label={item.label}
-                    {...item.props}
-                >
+                <Form.Item key={index} label={item.label} {...item.props}>
                     {item.field
                         ? getFieldDecorator(item.field, item.config)(
                               item.component
@@ -63,5 +57,5 @@ const QuickForm = React.forwardRef((props: Props, ref: React.Ref<FormItem>) => {
             ))}
         </React.Fragment>
     );
-});
+};
 export default QuickForm;

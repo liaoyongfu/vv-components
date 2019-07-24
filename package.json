@@ -16,7 +16,8 @@
     "url": "http://172.16.1.127:8050/VV-COMM/VV-FRONTEND-COMPONENTS"
   },
   "dependencies": {
-    "isomorphic-fetch": "^2.2.1"
+    "isomorphic-fetch": "^2.2.1",
+    "umi-request": "^1.1.0"
   },
   "devDependencies": {
     "@babel/core": "^7.4.4",
