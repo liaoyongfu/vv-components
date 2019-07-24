@@ -1,7 +1,7 @@
 {
   "name": "vv-frontend-components",
   "description": "项目中一些组件的积累，基于 antd 组件库进行扩展",
-  "version": "1.0.4-beta",
+  "version": "1.0.4",
   "main": "lib/index.js",
   "module": "es/index.js",
   "license": "MIT",
