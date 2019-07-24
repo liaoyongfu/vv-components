@@ -6,9 +6,9 @@
 - value： 表单默认值
 - cascaderProps：cascader 组件配置项
 - asianData： 国家数据字典
-- dictUrl：字典接口
-- request： request 方法
+- getData：获取字典数据的请求方法
 
+### 代码示例
 ```jsx static
    <Form>
         <Form.Item label="籍贯">
@@ -16,8 +16,16 @@
                 initialValue: []
                     })(
                 <CascaderLoad
-                      dictUrl='/api/dict/v1/getList'
-                      request={request}
+                      getData={(param)=>request('/api/dict/v1/getList',{
+                                    method: 'POST',
+                                    data: param
+                            }).then((res)=>{
+                                if(res && res.code === 10000 && res.data){
+                                    return  res.data || []
+                                }
+                                return []
+                            })
+                        }
                       cascaderProps={{
                       placeholder: '请选择籍贯'
                           }}
@@ -74,15 +82,23 @@ const Demo =props=>{
                             {getFieldDecorator('nationalArea', {
                                     initialValue: []
                             })(
-                                <CascaderLoad
-                                 dictUrl='/api/dict/v1/getList'
-                                 request={request}
-                                 cascaderProps={{
-                                    placeholder: '请选择籍贯'
-                                 }}
-                                 asianData={asianMocks}
-                                />
-                              )}
+                            <CascaderLoad
+                                    getData={(param)=>request('/api/dict/v1/getList',{
+                                    method: 'POST',
+                                    data: param
+                            }).then((res)=>{
+                                if(res && res.code === 10000 && res.data){
+                                    return  res.data || []
+                                }
+                                return []
+                            })
+                            }
+                            cascaderProps={{
+                                placeholder: '请选择籍贯'
+                             }}
+                            asianData={asianMocks}
+                      />
+                    )}
                     </Form.Item>
             </Form>
     )

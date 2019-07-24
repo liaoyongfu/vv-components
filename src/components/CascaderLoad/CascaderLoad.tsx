@@ -1,6 +1,5 @@
 import * as React from 'react';
 import { Cascader } from 'antd';
-import { RequestMethod } from 'umi-request';
 
 const china: { [key: string]: number | string | false } = {
     id: 0,
@@ -13,6 +12,10 @@ const china: { [key: string]: number | string | false } = {
     isLeaf: false,
     remark: ''
 };
+export interface ParamType {
+    code: string;
+    parentId: number;
+}
 export interface Props {
     onChange: (e: any) => void;
     /**
@@ -28,46 +31,25 @@ export interface Props {
      */
     asianData: Array<{ [key: string]: any }>;
     /**
-     * 字典接口
+     * 获取字典数据的请求方法
      */
-    dictUrl: string;
-    /**
-     * request方法
-     */
-    request: RequestMethod<false>;
+    getData: (param: ParamType) => Promise<any>;
 }
 /**
  * 联级选择器
  *
  */
 const CascaderLoad = (props: Props) => {
-    const {
-        onChange,
-        value,
-        cascaderProps,
-        asianData,
-        dictUrl,
-        request
-    } = props;
+    const { onChange, value, cascaderProps, asianData, getData } = props;
     const [options, setOptions] = React.useState([]);
 
-    const fetchDic = async param => {
-        const result = await request(dictUrl, {
-            method: 'POST',
-            data: param
-        });
-        if (result && result.code === 10000 && result.data) {
-            return result.data || [];
-        }
-        return [];
-    };
     const handleChange = e => {
         onChange(e);
     };
     const loadData = selectedOptions => {
         const targetOption = selectedOptions[selectedOptions.length - 1];
         targetOption.loading = true;
-        let codeTmp = null;
+        let codeTmp: string = null;
         let isLeaf = false;
         const { code } = targetOption;
         switch (code) {
@@ -85,7 +67,7 @@ const CascaderLoad = (props: Props) => {
                 codeTmp = null;
                 isLeaf = false;
         }
-        fetchDic({
+        getData({
             code: codeTmp,
             parentId: codeTmp === 'province' ? null : targetOption.id
         }).then(data => {
