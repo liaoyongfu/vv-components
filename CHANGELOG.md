@@ -1,3 +1,17 @@
+## <small>1.0.4-beta (2019-07-24)</small>
+
+* docs: changelog ([6813714](http://172.16.1.127:8050/VV-COMM/VV-FRONTEND-COMPONENTS/commits/6813714))
+* docs: proxy参数说明 ([fc316e9](http://172.16.1.127:8050/VV-COMM/VV-FRONTEND-COMPONENTS/commits/fc316e9))
+* docs: update README ([eb2b559](http://172.16.1.127:8050/VV-COMM/VV-FRONTEND-COMPONENTS/commits/eb2b559))
+* docs: 组件示例补充 ([de4385b](http://172.16.1.127:8050/VV-COMM/VV-FRONTEND-COMPONENTS/commits/de4385b))
+* feat: add webpack devServer ([8fde635](http://172.16.1.127:8050/VV-COMM/VV-FRONTEND-COMPONENTS/commits/8fde635))
+* feat: cascaderLoad添加getData方法，外界获取到字典返回值 ([0522fae](http://172.16.1.127:8050/VV-COMM/VV-FRONTEND-COMPONENTS/commits/0522fae))
+* feat: 地区联级选择器 ([def3237](http://172.16.1.127:8050/VV-COMM/VV-FRONTEND-COMPONENTS/commits/def3237))
+* feat: 本地调试CascaderLoad组件 ([f74d5ae](http://172.16.1.127:8050/VV-COMM/VV-FRONTEND-COMPONENTS/commits/f74d5ae))
+* feat: 转发ref添加类型 ([e99fd9d](http://172.16.1.127:8050/VV-COMM/VV-FRONTEND-COMPONENTS/commits/e99fd9d))
+
+
+
 ## <small>1.0.3 (2019-06-25)</small>
 
 * feat: 使用 babel 去编译；升级 eslint-config-vv 版本（去掉eslint-config-compact） ([472419f](http://172.16.1.127:8050/VV-COMM/VV-FRONTEND-COMPONENTS/commits/472419f))
