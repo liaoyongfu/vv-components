@@ -104,5 +104,6 @@ const Demo =props=>{
     )
 }
 const DemoUse = Form.create()(Demo);
+
 <DemoUse/>
 ```
