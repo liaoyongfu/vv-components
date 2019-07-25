@@ -58,17 +58,34 @@ const Demo = props => {
 2. git commit 后：为了规范化提交消息，使用 [约定式提交规范](https://www.conventionalcommits.org/zh/v1.0.0-beta.3/) 进行提交，所以我们在 `git add .` 后，
 使用 `yarn commit` 命令进行提交，而不是 `git commit -m 'xxx'`。提交时的日志需要遵从此规范。当你提交后，还会进行 commit 日志校验，如果不符合规范会报错。
 
-- 贡献流程（在 develop 开发）
-    - 修改
-    - git add、git commit
-    - 本地自测（使用 yarn link后，在示例项目中自测）
-    - 修改版本号
-    - yarn build
-    - 自动生成 CHANGELOG.md 文件（运行 yarn changelog）
-    - git add、git commit
-    - git push
-    - git tag
-    
+##  贡献流程（大致遵循 Merge Request工作模式）
+> see: https://docs.gitlab.com/ee/user/project/merge_requests/
+
+1. 在develop分支 拉取远程最新代码 创建自己的本地分支并切换
+  - git pull 
+  - git checkout -b <branchName>
+
+2. 推送到远端，创建`merge request`
+  - git push origin <branchName>
+  - 建立目标为`develop`分支的 MR 指定审查者
+  - 在 MR 的标题开头添加`WIP:`(WIP MR 含义是 在工作过程中的合并请求，是一个我们在 GitLab 中避免 MR 在准备就绪前被合并的技术)
+
+3. 本地功能开发完成
+  - git add、git commit
+  - 本地自测（使用 yarn link后，在示例项目中自测
+  - git push origin <branchName>
+  - 编辑 MR 来手动删除标题中的 `WIP:`
+
+4. 审查者code review 审查通过后 你的 merge request 将被合并到 develop
+
+5. 审查者更新组件库
+  - 修改版本号
+  - yarn build
+  - 自动生成 CHANGELOG.md 文件（运行 yarn changelog）
+  - git add、git commit
+  - git push
+  - git tag
+  - npm publish
 
 ## 规范参考
 
