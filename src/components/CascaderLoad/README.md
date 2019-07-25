@@ -41,7 +41,8 @@ import React from 'react';
 import {
 Form
 } from 'antd';
-import { CascaderLoad,utils } from 'vv-frontend-components';
+import { CascaderLoad } from 'vv-frontend-components';
+import request from 'vv-frontend-components/utils/request';
 const asianMocks= [
         {
             "id": 659007,
@@ -74,8 +75,7 @@ const asianMocks= [
             "remark": ""
         }]
 const Demo =props=>{
-    const {form:{getFieldDecorator}}=props
-    const {request}=utils
+    const {form:{getFieldDecorator}}=props;
     return(
            <Form>
                     <Form.Item label="籍贯">

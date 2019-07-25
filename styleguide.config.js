@@ -35,6 +35,10 @@ module.exports = {
                     });
             },
             sectionDepth: 1
+        },
+        {
+            name: 'Utils',
+            content: 'src/utils/README.md'
         }
     ],
     pagePerSection: true,

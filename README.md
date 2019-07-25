@@ -95,12 +95,7 @@ const Demo = props => {
 
 ## TODO
 
-- [x] Eslint 配置（TS 环境下）
-- [ ] 构建
 - [ ] 测试和 CI
-- [x] 规范化提交（CHANGLOG 自动生成、git 钩子）
-- [ ] 说明文档编写
-- [x] 增加 utils
 
 ## 注意事项
 
