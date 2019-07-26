@@ -1,3 +1,4 @@
+const webpack = require('webpack');
 const babel = require('@babel/core');
 const path = require('path');
 const fs = require('fs');
