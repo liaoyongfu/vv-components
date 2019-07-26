@@ -3,7 +3,7 @@
 ````jsx harmony
 import { Form, Input, Tooltip, Icon } from 'antd';
 import React from 'react';
-import { QuickForm } from 'vv-components';
+import { QuickForm } from 'vv-frontend-components';
 
 const formItemLayout = {
   labelCol: {

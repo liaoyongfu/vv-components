@@ -1,19 +1,27 @@
 {
   "compilerOptions": {
-    "outDir": "es",
-    "module": "es6",
+    "outDir": "lib",
+    "module": "esnext",
     "target": "es5",
-    "moduleResolution": "node",
     "jsx": "react",
-    "declaration": true
+    "moduleResolution": "node",
+    "declaration": true,
+    "downlevelIteration": true,
+    // "strictNullChecks":true,
+    "allowSyntheticDefaultImports": true,
+    "baseUrl": ".",
+    "paths": {
+      "@/*": ["./src/*"]
+    }
   },
   "include": [
-    "src/**/*"
+    "src/**/**.tsx"
   ],
   "exclude": [
     "node_modules",
     "dist",
     "es",
-    "lib"
+    "lib",
+    "**/*.test.tsx"
   ]
 }

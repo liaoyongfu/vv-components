@@ -1,7 +1,7 @@
 基于 antd 的 Table 组件，带上了总数和每页数量。
 
 ````jsx harmony
-<TablePagination value={10}/>
+<TablePagination total={100} pageSize={20} />
 ````
 
 结合 antd 使用示例：
@@ -10,7 +10,7 @@
 import React, { useState, useEffect } from 'react';
 import { Table } from 'antd';
 import reqwest from 'reqwest';
-import { TablePagination } from 'vv-components';
+import { TablePagination } from 'vv-frontend-components';
 
 const columns = [{
   title: 'Name',

@@ -1,3 +1,4 @@
 import deepTrim from './deepTrim';
+import useList from './useList';
 
-export { deepTrim };
+export default { deepTrim, useList };

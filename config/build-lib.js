@@ -12,4 +12,4 @@ cleanDistFolder(['./lib/**', './es/**']);
 console.log('编译lib...'.green);
 buildLib('commonjs', SRC_PATH, LIB_PATH);
 console.log('编译es...'.green);
-buildLib(false, SRC_PATH, ES_PATH);
+// buildLib(false, SRC_PATH, ES_PATH);

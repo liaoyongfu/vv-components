@@ -33,10 +33,13 @@ function fileDisplay(filePath, callback) {
         const stats = fs.statSync(filedir);
         const isFile = stats.isFile(); // 是文件
         const isDir = stats.isDirectory(); // 是文件夹
-        if (isFile && path.extname(filename) === '.tsx') {
+        if (
+            isFile &&
+            filename.indexOf('.test.') === -1 &&
+            path.extname(filename) === '.tsx'
+        ) {
             callback(
-                path.relative(path.resolve(__dirname, '../src/'), filedir),
-                filename
+                path.relative(path.resolve(__dirname, '../src/'), filedir)
             );
         }
         if (isDir) {
@@ -47,31 +50,49 @@ function fileDisplay(filePath, callback) {
 
 function buildLib(modules, srcPath, distPath) {
     fileDisplay(srcPath, dir => {
-        const result = babel.transformFileSync(path.join(srcPath, dir), {
-            presets: [
-                {
-
-                }
-            ]
-        });
         const filePath = path.join(distPath, dir);
-        if (!fs.existsSync(distPath)) {
-            fs.mkdirSync(distPath);
-        }
-        if (!fs.existsSync(path.dirname(filePath))) {
-            fs.mkdirSync(path.dirname(filePath), { recursive: true });
-        }
-        fs.writeFileSync(
-            path.join(
-                path.dirname(filePath),
-                `${path.basename(filePath, '.tsx')}.js`
-            ),
-            result.code,
-            {
-                flag: 'w+',
-                encoding: 'utf8'
+        {
+            const result = babel.transformFileSync(path.join(srcPath, dir), {
+                presets: [
+                    [
+                        '@babel/preset-env',
+                        {
+                            modules
+                        }
+                    ],
+                    '@babel/preset-react',
+                    '@babel/preset-typescript'
+                ],
+                plugins: [
+                    '@babel/plugin-proposal-class-properties',
+                    [
+                        'import',
+                        {
+                            libraryName: 'antd',
+                            libraryDirectory: 'lib', // default: lib
+                            style: true
+                        }
+                    ]
+                ]
+            });
+            if (!fs.existsSync(distPath)) {
+                fs.mkdirSync(distPath);
             }
-        );
+            if (!fs.existsSync(path.dirname(filePath))) {
+                fs.mkdirSync(path.dirname(filePath), { recursive: true });
+            }
+            fs.writeFileSync(
+                path.join(
+                    path.dirname(filePath),
+                    `${path.basename(filePath, '.tsx')}.js`
+                ),
+                result.code,
+                {
+                    flag: 'w+',
+                    encoding: 'utf8'
+                }
+            );
+        }
     });
 }
 
@@ -82,9 +103,9 @@ function configs(minimize, srcPath, distPath) {
         devtool: 'cheap-module-source-map',
         output: {
             path: distPath,
-            filename: minimize ? 'shareui.min.js' : 'shareui.js',
+            filename: minimize ? 'vv-components.min.js' : 'vv-components.js',
             libraryTarget: 'umd',
-            library: 'Shareui'
+            library: 'VVcomponents'
         },
         externals: [nodeExternals()],
         optimization: {

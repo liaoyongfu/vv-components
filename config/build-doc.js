@@ -24,6 +24,15 @@ module.exports = merge.smartStrategy({
             }
         ]
     },
+    devServer: {
+        proxy: {
+            '/api/dict': {
+                target: 'http://172.16.1.98:7003',
+                changeOrigin: true, // target是域名的话需要这个参数
+                secure: false
+            }
+        }
+    },
     plugins: [
         new MiniCssExtractPlugin({
             // Options similar to the same options in webpackOptions.output
@@ -34,7 +43,7 @@ module.exports = merge.smartStrategy({
     ],
     resolve: {
         alias: {
-            'vv-components': path.resolve(__dirname, '../src')
+            'vv-frontend-components': path.resolve(__dirname, '../src')
         }
     },
     // not work?
