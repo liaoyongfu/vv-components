@@ -3,6 +3,7 @@ import QuickForm from './components/QuickForm';
 import UploadAws from './components/UploadAws';
 import CascaderLoad from './components/CascaderLoad';
 import YearPicker from './components/YearPicker';
+import FlowChart from './components/FlowChart';
 import utils from './utils';
 
 export {
@@ -11,5 +12,6 @@ export {
     QuickForm,
     UploadAws,
     CascaderLoad,
-    YearPicker
+    YearPicker,
+    FlowChart
 };

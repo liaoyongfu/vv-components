@@ -1,10 +1,11 @@
 const path = require('path');
 const glob = require('glob');
 const docgen = require('react-docgen-typescript');
+const pkg = require('./package');
 const webpackConfig = require('./config/build-doc');
 
 module.exports = {
-    title: 'VV Components',
+    title: `VV Components v${pkg.version}`,
     require: ['antd/dist/antd.min.css', './example/doc.css'],
     webpackConfig,
     propsParser: docgen.withDefaultConfig({
